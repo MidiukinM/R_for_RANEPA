@@ -28,7 +28,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **} else {**
   
-  _ЗДействия, если FAlSE_
+  _Действия, если FALSE_
 
 **}**
 </h5>
