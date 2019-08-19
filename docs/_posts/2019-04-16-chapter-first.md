@@ -3,7 +3,8 @@ title: 'Семестр 1'
 
 layout: nil
 ---
-
+### План курса
+[План](https://github.com/MidiukinM/R_for_RANEPA/blob/master/docs/scripts/sem_1/plan/plan.html)
 ### День 0
 
 * Знакомство
