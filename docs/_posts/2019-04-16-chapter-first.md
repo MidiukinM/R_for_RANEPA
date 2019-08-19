@@ -12,14 +12,14 @@ layout: nil
 * Работа с консолью
 * Арифметические операции в _R_
 * Что такое переменная и ее способы задания
-* [Наш первый скрипт]
+* [Наш первый скрипт](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_1/script1.html)
 
 ### День 1
 
 * Структуры данных
 * Изучаем массивы, матрицы и списки
 * Индексирование
-* [Материалы с пар]
+* [Скрипт с занятия](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_2/script3.html)
 
 ### День 2
 
@@ -27,7 +27,7 @@ layout: nil
 * Условный оператор _if_
 * Циклы _for_ и _while_
 * Изучаем блок-схемы
-* [Скрипт занятия]
+* [Скрипт с занятия](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_3/script2.html)
 
 ### День 3
 
@@ -37,7 +37,7 @@ layout: nil
 * Глобальные и локальные переменные
 * Переменные, заданные в функции по умолчанию
 * Рекурсия
-* [Скрипт занятия]
+* [Скрипт с занятия](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_4/script4.html)
 
 ### День 4
 
