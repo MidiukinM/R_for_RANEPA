@@ -46,9 +46,9 @@ print(bubble_sort(x))
 
 При сортировке слиянием массив разбивается пополам на 2 массива до тех пор, пока не останется по одному элементу. Потом начинается поочередное слияние, но только уже в отсортированном порядке. Более наглядно представлено на рисунках.
 
-![Рисунок 1]
+![](https://github.com/MidiukinM/R_for_RANEPA/blob/master/docs/_includes/pic1.png?raw=true)
 
-![Рисунок 2]
+![](https://github.com/MidiukinM/R_for_RANEPA/blob/master/docs/_includes/pic2.png?raw=true)
 
 ```{r}
 MERGE <- function(A,B){ 
@@ -83,12 +83,13 @@ print(mergeSORT(D))
 
 ## Сортировка вставками
 
-![гиф]
+![](https://github.com/MidiukinM/R_for_RANEPA/blob/master/docs/_includes/insertion.gif?raw=true)
 
 ```{r}
 insertion <- function(x){
   for(i in 2:length(x)){
     k <- i
+    
     C <- x[i]
     for(j in (i-1):1){
       if(x[j] > C){
