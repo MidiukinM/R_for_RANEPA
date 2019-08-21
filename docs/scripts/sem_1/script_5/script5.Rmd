@@ -147,7 +147,7 @@ selection(x)
 
 ## Сложности сортировок
 
-
+![](https://github.com/MidiukinM/R_for_RANEPA/blob/master/docs/_includes/complexity.png?raw=true)
 
 
 
