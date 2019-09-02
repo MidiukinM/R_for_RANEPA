@@ -1647,43 +1647,53 @@ div.tocify {
 <a class="sourceLine" id="cb11-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb11-5" data-line-number="5"><span class="kw">print</span>(numbers)</a></code></pre></div>
 <pre><code>## [1] 10 11 12  2</code></pre>
+<p>Есть также так называемая логическая индексация. Например выведем все четные значения в x.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">x[x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]</a></code></pre></div>
+<pre><code>## [1] 10  8</code></pre>
 </div>
 <div id="-" class="section level3">
 <h3>Полезные функции</h3>
 <p>Теперь рассмотрим несколько наиболее часто встречающихся функций с массивами. Функция <code>length(x)</code>, где <code>x</code> - это сам вектор, считает количество элементов в нем.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2">len &lt;-<span class="st"> </span><span class="kw">length</span>(vec)</a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="kw">print</span>(len)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">len &lt;-<span class="st"> </span><span class="kw">length</span>(vec)</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="kw">print</span>(len)</a></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>Элементов получилось 6,но что будет если мы попробуем вывести 7-ой элемент.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">print</span>(vec[<span class="dv">7</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">print</span>(vec[<span class="dv">7</span>])</a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>А что, если мы захотим добавить еще элементы? Сделать это можно несколькими способами. Первый - создать новый вектор, в который будет входить предыдущий</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">vec2 &lt;-<span class="st"> </span><span class="kw">c</span>(vec,<span class="dv">10</span>,<span class="dv">13</span>,<span class="dv">99</span>)</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw">print</span>(vec2)</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">vec2 &lt;-<span class="st"> </span><span class="kw">c</span>(vec,<span class="dv">10</span>,<span class="dv">13</span>,<span class="dv">99</span>)</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw">print</span>(vec2)</a></code></pre></div>
 <pre><code>## [1]  0  0  0  0  0  0 10 13 99</code></pre>
 <p>В данном случае мы можем вставить элементы в начало или конец. Если же нужно вставить элемент в определенное место, используем функцию <code>append</code>.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">(numbers &lt;-<span class="st"> </span><span class="kw">append</span>(numbers,<span class="op">-</span><span class="ot">Inf</span>,<span class="dt">after =</span> <span class="dv">3</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">(numbers &lt;-<span class="st"> </span><span class="kw">append</span>(numbers,<span class="op">-</span><span class="ot">Inf</span>,<span class="dt">after =</span> <span class="dv">3</span>))</a></code></pre></div>
 <pre><code>## [1]   10   11   12 -Inf    2</code></pre>
 <p>Добавлять научились, теперь научимся удалять.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">numbers &lt;-<span class="st"> </span>numbers[<span class="op">-</span><span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="kw">print</span>(numbers)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">numbers &lt;-<span class="st"> </span>numbers[<span class="op">-</span><span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="kw">print</span>(numbers)</a></code></pre></div>
 <pre><code>## [1]   11   12 -Inf    2</code></pre>
 <p>Также часто нам пригодится создавать вектор из случайных чисел. Более подробно это рассматривается при изучении математической статистики на 2 курсе, и вы скорее всего будете много работать со случайными числами на допе у Филиппа. Сейчас же мы просто ограничимся одной функцией.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">random &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">random &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 </div>
 <div id="-" class="section level3">
 <h3>Арифметические операции</h3>
 <p>Большинство арифметических операций векторизовано. Это означает, что функция применяется поэлементно.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">vec1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb24-2" data-line-number="2">vec2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb24-3" data-line-number="3">vec1<span class="op">+</span>vec2</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">vec1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">vec2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">vec1<span class="op">+</span>vec2</a></code></pre></div>
 <pre><code>## [1] 4 4 4 4</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">sqrt</span>(vec1)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">sqrt</span>(vec1)</a></code></pre></div>
 <pre><code>## [1] 1.000000 1.414214 1.732051 2.000000</code></pre>
 <p>А вот функция <code>sum()</code> невекторизована, она выдает одно число, состоящее из суммы всех остальных.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">sum</span>(vec1)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">sum</span>(vec1)</a></code></pre></div>
 <pre><code>## [1] 10</code></pre>
+<p>Что, если мы попробуем сложить 2 вектора разной длины?</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span></a></code></pre></div>
+<pre><code>##  [1]  2  4  4  6  6  8  8 10 10 12</code></pre>
+<p>В подобных случаях <em>R</em> зацикливает, то есть многократно повторяет короткий вектор до достижения длины более длинного вектора. Часто на этом моменте возникают ошибки в коде, поэтому если необходимо использовать зацикливание, то это следует указать явно с помощью функции <code>rep()</code></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## [1] 1 2 1 2</code></pre>
 </div>
 </div>
 <div class="section level2">
@@ -1691,55 +1701,55 @@ div.tocify {
 <div id="-" class="section level3">
 <h3>Способы задания</h3>
 <p>Матрица представляет собой двумерный массив данных. По сути, это несколько векторов, которые уложены по столбцам. Создать матрицу можно с помощью функции <code>matrix</code>. Сначала нужно передать в эту функцию вектор, который состоит из значений внутри матрицы, а потом задать способы ее заполнения. Например, явно указать кол-во столбцов и строк.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    3
 ## [2,]    2    4</code></pre>
 <p>Конечно, необязательно указывать и строки и столбцы. Достаточно указать что-то одно, а другое заполнится автоматически исходя из длины предоставленного в матрицу вектора.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow =</span> <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    3
 ## [2,]    2    4</code></pre>
 <p>Если мы хотим, чтобы вектор был упакован не по столбцам, а по строкам, можно воспользоваться аргументом <code>byrow = TRUE</code></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    2
 ## [2,]    3    4</code></pre>
 <p>Если же нам нужна матрица какого-то определенного размера, а мы укажем вектор короче этого размера, то значения просто продублируются. Но лучше так не делать, потому что можно запутаться. Если нужно продублировать в каком-то месте значения, укажите это явно в переданном массиве.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    2    3
 ## [2,]    1    2    3</code></pre>
 <p>У матрицы есть атрибут <code>dim</code>, который отвечает за ее размерность. То есть он выдает кол-во строк и столбцов в матрице.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="kw">dim</span>(m)</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="kw">dim</span>(m)</a></code></pre></div>
 <pre><code>## [1] 3 2</code></pre>
 </div>
 <div id="-" class="section level3">
 <h3>Арифметичекие операции</h3>
 <p>С матрицами работают те же правила, что и с векторами. То есть большинство операций происходит поэлементно.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">(m1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow =</span> <span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">(m1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow =</span> <span class="dv">2</span>))</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    3
 ## [2,]    2    4</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">(m2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>), <span class="dt">nrow =</span> <span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">(m2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>), <span class="dt">nrow =</span> <span class="dv">2</span>))</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   10   30
 ## [2,]   20   40</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">m1 <span class="op">+</span><span class="st"> </span>m2</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">m1 <span class="op">+</span><span class="st"> </span>m2</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   11   33
 ## [2,]   22   44</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">m2 <span class="op">-</span><span class="st"> </span>m1</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">m2 <span class="op">-</span><span class="st"> </span>m1</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    9   27
 ## [2,]   18   36</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">m1 <span class="op">*</span><span class="st"> </span>m2</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">m1 <span class="op">*</span><span class="st"> </span>m2</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   10   90
 ## [2,]   40  160</code></pre>
 <p>Заметим, что умножение символом <code>*</code> перемножит значения <strong>поэлементно</strong>. Помним, что в линейной алгебре матрицы перемножаются другим правилом. Чтобы перемножить по правилам линейной алгебры, нужно воспользоваться символом <code>%*%</code></p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">m1 <span class="op">%*%</span><span class="st"> </span>m2</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">m1 <span class="op">%*%</span><span class="st"> </span>m2</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   70  150
 ## [2,]  100  220</code></pre>
@@ -1747,18 +1757,18 @@ div.tocify {
 <div id="-" class="section level3">
 <h3>Индексирование матриц</h3>
 <p>Так как матрица - это <strong>двумерный</strong> массив, то и индексирование производится с учетом двух размерностей.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">(m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">ncol =</span> <span class="dv">3</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">(m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">ncol =</span> <span class="dv">3</span>))</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]    2    4    6</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">m[<span class="dv">1</span>,<span class="dv">3</span>] <span class="co"># выводим элемент в первой строке и в третьем столбце</span></a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">m[<span class="dv">1</span>,<span class="dv">3</span>] <span class="co"># выводим элемент в первой строке и в третьем столбце</span></a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">m[<span class="dv">2</span>,] <span class="co"># выводим все элементы во второй строке</span></a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">m[<span class="dv">2</span>,] <span class="co"># выводим все элементы во второй строке</span></a></code></pre></div>
 <pre><code>## [1] 2 4 6</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">m[,<span class="dv">1</span>] <span class="co"># выводим все элементы в первом столбце</span></a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">m[,<span class="dv">1</span>] <span class="co"># выводим все элементы в первом столбце</span></a></code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
 <p>Заметим, что когда мы выводим один столбец, у нас теряется размерность. То есть числа, которые сидят в выводимом столбце матрицы, имеют вид массива, а не матрицы. Чтобы этого не произошло, нужно в индексировании добавить аргумент <code>drop = FALSE</code></p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">m[,<span class="dv">1</span>, drop =<span class="st"> </span><span class="ot">FALSE</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">m[,<span class="dv">1</span>, drop =<span class="st"> </span><span class="ot">FALSE</span>]</a></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]    1
 ## [2,]    2</code></pre>
@@ -1766,13 +1776,13 @@ div.tocify {
 <div id="-" class="section level3">
 <h3>Присоединение матриц</h3>
 <p>Две и более матриц можно соединить друг с другом. Это делается с помощью функций <code>cbind</code> и <code>rbind</code>. Первая присоединяет по строкам, вторая, соответственно, по столбцам.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">rbind</span>(m1,m2)</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">rbind</span>(m1,m2)</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    3
 ## [2,]    2    4
 ## [3,]   10   30
 ## [4,]   20   40</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">cbind</span>(m1,m2)</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">cbind</span>(m1,m2)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    3   10   30
 ## [2,]    2    4   20   40</code></pre>
@@ -1783,7 +1793,7 @@ div.tocify {
 <div id="-" class="section level3">
 <h3>Способ задания</h3>
 <p>Список - это индексированная структура, элементами в котором могут быть объекты любого типа. Создание списков осуществляется функцией <code>list</code></p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="st">'R_for_RANEPA'</span>, <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="st">'R_for_RANEPA'</span>, <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1 2 3 4
 ## 
@@ -1795,7 +1805,7 @@ div.tocify {
 ## [1,]    1    2    3
 ## [2,]    1    2    3</code></pre>
 <p>Также каждую группу элементов в списке можно называть.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1">(l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">vector =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">stroka =</span> <span class="st">'R_for_RANEPA'</span>, <span class="dt">matrix =</span> <span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">2</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">(l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">vector =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">stroka =</span> <span class="st">'R_for_RANEPA'</span>, <span class="dt">matrix =</span> <span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">2</span>)))</a></code></pre></div>
 <pre><code>## $vector
 ## [1] 1 2 3 4
 ## 
@@ -1810,17 +1820,17 @@ div.tocify {
 <div id="-1" class="section level3">
 <h3>Индексирование</h3>
 <p>Индексирование в списках “двумерное”. То есть, если мы воспользуемся обычным индексированием [ ], то мы получим доступ к подсписку.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">l[<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">l[<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## $vector
 ## [1] 1 2 3 4</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">l[<span class="st">'vector'</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">l[<span class="st">'vector'</span>]</a></code></pre></div>
 <pre><code>## $vector
 ## [1] 1 2 3 4</code></pre>
 <p>Если же мы воспользуемся индексированием с помощью [ [ ] ], то получим доступ к элементу подсписка.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">l[[<span class="dv">1</span>]] <span class="co"># здесь получаем доступ к массиву</span></a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">l[[<span class="dv">1</span>]] <span class="co"># здесь получаем доступ к массиву</span></a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <p>Когда мы получили доступ к нужному нам элементу, мы можем воспользоваться индексированием на нем. Предположим, что нам нужно вывести 3ий элемент в массиве, а массив находится в 1ом подсписке.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">l[[<span class="dv">1</span>]][<span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">l[[<span class="dv">1</span>]][<span class="dv">3</span>]</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
 </div>
