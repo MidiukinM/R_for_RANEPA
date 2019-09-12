@@ -12,7 +12,7 @@ layout: nil
 * Работа с консолью
 * Арифметические операции в _R_
 * Что такое переменная и ее способы задания
-* [Наш первый скрипт](https://github.com/MidiukinM/R_for_RANEPA/blob/master/docs/scripts/sem_1/script_1/script1.html?raw=true)
+* [Наш первый скрипт](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_1/script1.html)
 
 ### День 1
 
