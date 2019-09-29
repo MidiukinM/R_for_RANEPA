@@ -27,7 +27,7 @@ layout: nil
 * Условный оператор _if_
 * Циклы _for_ и _while_
 * Изучаем блок-схемы
-* Скрипт с занятия
+* [Скрипт с занятия](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_3/script2.html)
 
 ### День 3
 
