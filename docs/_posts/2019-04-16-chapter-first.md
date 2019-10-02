@@ -42,4 +42,4 @@ layout: nil
 ### День 4
 
 * Начинаем изучать базовые алгоритмы
-* Сортировки
+* [Сортировка пузырьком](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_5/bubble.html) 
