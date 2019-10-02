@@ -37,7 +37,7 @@ layout: nil
 * Глобальные и локальные переменные
 * Переменные, заданные в функции по умолчанию
 * Рекурсия
-* Скрипт с занятия(https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_4/script4.html)
+* [Скрипт с занятия](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_4/script4.html)
 
 ### День 4
 
