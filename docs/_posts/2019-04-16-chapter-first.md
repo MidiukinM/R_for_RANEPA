@@ -42,4 +42,9 @@ layout: nil
 ### День 4
 
 * Начинаем изучать базовые алгоритмы
-* [Сортировка пузырьком](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_5/bubble.html) 
+* [Сортировка пузырьком](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_5/bubble.html)
+
+### День 5
+
+* Начинаем изучать базовые алгоритмы
+* [Сортировка выбором](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_5/choice.html) 
