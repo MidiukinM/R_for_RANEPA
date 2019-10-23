@@ -46,5 +46,8 @@ layout: nil
 
 ### День 5
 
-* Начинаем изучать базовые алгоритмы
-* [Сортировка выбором](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_5/choice.html) 
+* [Сортировка выбором](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_5/choice.html)
+
+### День 6
+
+* [Сортировка выбором](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_5/merge.html) 
