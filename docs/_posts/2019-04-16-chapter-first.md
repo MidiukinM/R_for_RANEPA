@@ -50,4 +50,6 @@ layout: nil
 
 ### День 6
 
-* [Сортировка слиянием](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_5/merge.html) 
+* [Сортировка слиянием](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_5/merge.html)
+
+### [Классная визуализация сортировок](https://www.youtube.com/watch?v=Gnp8G1_kO3I)
