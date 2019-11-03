@@ -52,4 +52,6 @@ layout: nil
 
 * [Сортировка слиянием](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_5/merge.html)
 
-### [Классная визуализация сортировок](https://www.youtube.com/watch?v=Gnp8G1_kO3I)
+## Дополнительные материалы
+* [Классная визуализация сортировок](https://www.youtube.com/watch?v=Gnp8G1_kO3I)
+* [Большой скрипт про сложность O-большое](https://MidiukinM.github.io/R_for_RANEPA/scripts/sem_1/script_6/complexity.html)
