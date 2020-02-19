@@ -1743,48 +1743,54 @@ div.tocify {
 <a class="sourceLine" id="cb7-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co"># теперь применяем АГРЕГИРУЮЩУЮ функцию на наблюдения внутри КАЖДОЙ группы объекта group_by()</span></a>
 <a class="sourceLine" id="cb7-5" data-line-number="5">df5 &lt;-<span class="st"> </span><span class="kw">summarize</span>(gb, <span class="dt">sum_dep_delay =</span> <span class="kw">sum</span>(dep_delay))</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="kw">head</span>(df5)</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">## # A tibble: 5 x 2</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">##   carrier sum_dep_delay</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">##   &lt;chr&gt;           &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">## 1 AA                 NA</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">## 2 B6                 NA</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">## 3 DL                 NA</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">## 4 UA                 NA</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">## 5 VX                 NA</span></a></code></pre></div>
+<a class="sourceLine" id="cb7-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co"># смотрим на первые 5 строк в получившейся таблице</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="kw">head</span>(df5)</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">## # A tibble: 5 x 2</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">##   carrier sum_dep_delay</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">##   &lt;chr&gt;           &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">## 1 AA                 NA</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">## 2 B6                 NA</span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">## 3 DL                 NA</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">## 4 UA                 NA</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">## 5 VX                 NA</span></a></code></pre></div>
 <p>Видим, что все значения у нас получились <strong>NA</strong> (подумайте почему, перед тем как читать дальше).</p>
 <p>Произошло это потому, что в наших наблюдениях были пропуски (то есть объекты <strong>NA</strong>), а как мы с вами уже знаем любая операция чисел вместе с объектом <strong>NA</strong> дает нам <strong>NA</strong> (5 + NA = NA, 5 / NA = NA и т.д.). Для того чтобы с этим бороться нужно игнорировать такие значения, делает это параметр <code>na.rm = TRUE</code> и он может использоваться практически в любой арифметической функции. Применим его:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># теперь применяем АГРЕГИРУЮЩУЮ функцию на наблюдения внутри КАЖДОЙ группы объекта group_by() вместе с na.rm = TRUE</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">df5 &lt;-<span class="st"> </span><span class="kw">summarize</span>(gb, <span class="dt">sum_dep_delay =</span> <span class="kw">sum</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">head</span>(df5)</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">## # A tibble: 5 x 2</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">##   carrier sum_dep_delay</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">##   &lt;chr&gt;           &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">## 1 AA              22956</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">## 2 B6              14921</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">## 3 DL              12759</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">## 4 UA              81252</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">## 5 VX              38333</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># теперь применяем АГРЕГИРУЮЩУЮ функцию на наблюдения внутри КАЖДОЙ группы </span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co"># объекта group_by() вместе с na.rm = TRUE</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">df5 &lt;-<span class="st"> </span><span class="kw">summarize</span>(gb, <span class="dt">sum_dep_delay =</span> <span class="kw">sum</span>(dep_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co"># смотрим на первые 5 строк в получившейся таблице</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="kw">head</span>(df5)</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">## # A tibble: 5 x 2</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">##   carrier sum_dep_delay</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">##   &lt;chr&gt;           &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">## 1 AA              22956</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">## 2 B6              14921</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">## 3 DL              12759</span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">## 4 UA              81252</span></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">## 5 VX              38333</span></a></code></pre></div>
 <p>Теперь все отлично. Мы получили общее время задержки для каждой авиакомпании.</p>
 <p><strong>Замечание:</strong> вместе с group_by() можно применять не только функцию <code>sum()</code>, но и любую другую АГРЕГИРУЮЩУЮ функцию. Например, <code>mean()</code> для вычисления среднего или <code>count()</code> для подсчета значений</p>
 <p>Напоследок, отсортируем наши значения еще раз в порядке убывания, чтобы получить наглядный результат.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># теперь применяем АГРЕГИРУЮЩУЮ функцию на наблюдения внутри КАЖДОЙ группы объекта group_by() вместе с na.rm = TRUE</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">df6 &lt;-<span class="st"> </span><span class="kw">arrange</span>(df5, <span class="kw">desc</span>(sum_dep_delay))</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw">head</span>(df6)</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">## # A tibble: 5 x 2</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">##   carrier sum_dep_delay</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">##   &lt;chr&gt;           &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">## 1 UA              81252</span></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">## 2 VX              38333</span></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">## 3 AA              22956</span></a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">## 4 B6              14921</span></a>
-<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">## 5 DL              12759</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">df6 &lt;-<span class="st"> </span><span class="kw">arrange</span>(df5, <span class="kw">desc</span>(sum_dep_delay))</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co"># смотрим на первые 5 строк в получившейся таблице</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw">head</span>(df6)</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">## # A tibble: 5 x 2</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">##   carrier sum_dep_delay</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">##   &lt;chr&gt;           &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">## 1 UA              81252</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">## 2 VX              38333</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">## 3 AA              22956</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">## 4 B6              14921</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">## 5 DL              12759</span></a></code></pre></div>
 <p>Итак, теперь вот мы уже с вами видим, что больше всего минут задержки рейсов было в 2013 году у авиакомпании UA (UNITED AIRLINES).</p>
 <p><strong>ВНИМАНИЕ: не было на семинаре</strong> Теперь предположим, что мы бы хотели получить итоговое время не в минутах, а в часах. Здесь нам помогает функция <code>mutate()</code>, которая просто преобразовывает данные в каком-либо столбце. Чтобы получить часы, нам нужно обратиться к целочисленному делению, а чтобы получить оставшиеся минуты - к получению остатка от деления. Делаем это так:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># теперь применяем АГРЕГИРУЮЩУЮ функцию на наблюдения внутри КАЖДОЙ группы </span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co"># объекта group_by() вместе с na.rm = TRUE</span></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">df7 &lt;-<span class="st"> </span><span class="kw">mutate</span>(df6, <span class="dt">sum_dep_delay_hour =</span> sum_dep_delay <span class="op">%/%</span><span class="st"> </span><span class="dv">60</span>, </a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">              <span class="dt">sum_dep_delay_minute =</span> sum_dep_delay <span class="op">%%</span><span class="st"> </span><span class="dv">60</span>)</a>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">df7 &lt;-<span class="st"> </span><span class="kw">mutate</span>(df6, <span class="dt">sum_dep_delay_hour =</span> sum_dep_delay <span class="op">%/%</span><span class="st"> </span><span class="dv">60</span>, </a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">              <span class="dt">sum_dep_delay_minute =</span> sum_dep_delay <span class="op">%%</span><span class="st"> </span><span class="dv">60</span>)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co"># смотрим на первые 5 строк в получившейся таблице</span></a>
 <a class="sourceLine" id="cb10-5" data-line-number="5"><span class="kw">head</span>(df7)</a>
 <a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">## # A tibble: 5 x 4</span></a>
 <a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">##   carrier sum_dep_delay sum_dep_delay_hour sum_dep_delay_minute</span></a>
